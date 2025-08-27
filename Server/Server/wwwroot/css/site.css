@@ -1,0 +1,168 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+ 
+.card {
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    margin: 20px auto; /* Center the card horizontally */
+}
+
+
+
+.footer {
+    background-color: black;
+}
+
+#signUpForm {
+    background-color: white;
+ }
+
+table.blueTable {
+    background-color: #FFEEC2;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+    table.blueTable td, table.blueTable th {
+        border: 1px solid #AAAAAA;
+        padding: 3px 2px;
+    }
+
+    table.blueTable tbody td {
+        font-size: 15px;
+    }
+
+    table.blueTable tr:nth-child(even) {
+        background: #D5AC81;
+    }
+
+    table.blueTable thead {
+        background: #664121;
+        background: -moz-linear-gradient(top, #8c7058 0%, #755437 66%, #664121 100%);
+        background: -webkit-linear-gradient(top, #8c7058 0%, #755437 66%, #664121 100%);
+        background: linear-gradient(to bottom, #8c7058 0%, #755437 66%, #664121 100%);
+        border-bottom: 2px solid #444444;
+    }
+
+        table.blueTable thead th {
+            font-size: 19px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #D0E4F5;
+        }
+
+            table.blueTable thead th:first-child {
+                border-left: none;
+            }
+
+    table.blueTable tfoot td {
+        font-size: 14px;
+    }
+
+    table.blueTable tfoot .links {
+        text-align: right;
+    }
+
+        table.blueTable tfoot .links a {
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+    background-image: url('/images/chessBackGnd.gif'); 
+    background-size: cover; 
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps it fixed during scroll */
+}
+
+.linqBtn {
+    background: none;
+    border: none;
+    color: white; /* Bootstrap 'link' color */
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: normal;
+    transition: color 0.3s ease;
+    white-space: nowrap
+}
+
+.linqBtnTable {
+    background: none;
+    border: none;
+    color: black; /* Bootstrap 'link' color */
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: normal;
+    transition: color 0.3s ease;
+    white-space: nowrap
+}
+
+.text-center {
+    color: white
+}
+
+.form-label {
+    color: white;
+}
+
+.card-title {
+    color: black;
+}
+
+#default-result {
+    font-size: 50px;
+    color: red;
+    background-color: black;
+    text-align: center;
+}
+
+.dynamic-select {
+    width: auto; /* Automatically adjust to content */
+    min-width: 100px; /* Optional: Set a minimum width to avoid it becoming too small */
+    max-width: 100%; /* Optional: Prevent it from growing too wide */
+    box-sizing: content-box; /* Ensure width takes content into account */
+}
+
+.round-img {
+    width: 50px; /* Adjust size here */
+    height: 50px; /* Keep it the same as width for a perfect circle */
+    margin-right: 20px;
+    border-radius: 50%; /* Makes it round */
+    object-fit: cover; /* Ensures the image scales nicely */
+    border: 2px solid #ddd; /* Optional border for styling */
+    display: inline-block;
+ }
+ 

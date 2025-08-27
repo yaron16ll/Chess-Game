@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GamesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="FromX" Type="int" Nullable="false" />
+          <Property Name="FromY" Type="int" Nullable="false" />
+          <Property Name="ToX" Type="int" Nullable="false" />
+          <Property Name="ToY" Type="int" Nullable="false" />
+          <Property Name="PieceType" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MovesTable_ToTable">
+          <End Role="GamesTable" Type="Self.GamesTable" Multiplicity="1" />
+          <End Role="MovesTable" Type="Self.MovesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamesTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovesTable">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDBModelStoreContainer">
+          <EntitySet Name="GamesTable" EntityType="Self.GamesTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovesTable" EntityType="Self.MovesTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MovesTable_ToTable" Association="Self.FK_MovesTable_ToTable">
+            <End Role="GamesTable" EntitySet="GamesTable" />
+            <End Role="MovesTable" EntitySet="MovesTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GamesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="MovesTable" Relationship="Self.FK_MovesTable_ToTable" FromRole="GamesTable" ToRole="MovesTable" />
+        </EntityType>
+        <EntityType Name="MovesTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <Property Name="FromX" Type="Int32" Nullable="false" />
+          <Property Name="FromY" Type="Int32" Nullable="false" />
+          <Property Name="ToX" Type="Int32" Nullable="false" />
+          <Property Name="ToY" Type="Int32" Nullable="false" />
+          <Property Name="PieceType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GamesTable" Relationship="Self.FK_MovesTable_ToTable" FromRole="MovesTable" ToRole="GamesTable" />
+        </EntityType>
+        <Association Name="FK_MovesTable_ToTable">
+          <End Role="GamesTable" Type="Self.GamesTable" Multiplicity="1" />
+          <End Role="MovesTable" Type="Self.MovesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GamesTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovesTable">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GamesTable" EntityType="Self.GamesTable" />
+          <EntitySet Name="MovesTable" EntityType="Self.MovesTable" />
+          <AssociationSet Name="FK_MovesTable_ToTable" Association="Self.FK_MovesTable_ToTable">
+            <End Role="GamesTable" EntitySet="GamesTable" />
+            <End Role="MovesTable" EntitySet="MovesTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDBModelStoreContainer" CdmEntityContainer="MyDBEntities">
+          <EntitySetMapping Name="GamesTable">
+            <EntityTypeMapping TypeName="MyDBModel.GamesTable">
+              <MappingFragment StoreEntitySet="GamesTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovesTable">
+            <EntityTypeMapping TypeName="MyDBModel.MovesTable">
+              <MappingFragment StoreEntitySet="MovesTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="FromX" ColumnName="FromX" />
+                <ScalarProperty Name="FromY" ColumnName="FromY" />
+                <ScalarProperty Name="ToX" ColumnName="ToX" />
+                <ScalarProperty Name="ToY" ColumnName="ToY" />
+                <ScalarProperty Name="PieceType" ColumnName="PieceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

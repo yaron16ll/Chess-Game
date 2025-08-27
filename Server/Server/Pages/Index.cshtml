@@ -1,0 +1,100 @@
+﻿@page
+@model Server.Pages.IndexModel
+@{
+    ViewData["Title"] = "Player Registration";
+}
+
+<!-- Modal for Success/Error Messages -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalTitle"></h5>
+            </div>
+            <div class="modal-body" id="messageModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Player Registration Form -->
+<div class="container-sm w-50">
+    <h2 class="text-center mb-4">Player Registration</h2>
+    <div class="form-container-sm p-4 rounded shadow-sm">
+        <form  class="container" method="post" asp-page-handler="CreatePlayer">
+            <div class="mb-3">
+                <label asp-for="PlayersTable.FirstName" class="form-label">First Name</label>
+                <input asp-for="PlayersTable.FirstName" class="form-control" />
+                <span asp-validation-for="PlayersTable.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlayersTable.LastName" class="form-label">Last Name</label>
+                <input asp-for="PlayersTable.LastName" class="form-control" />
+                <span asp-validation-for="PlayersTable.LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlayersTable.ID" class="form-label">ID</label>
+                <input asp-for="PlayersTable.ID" class="form-control" />
+                <span asp-validation-for="PlayersTable.ID" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlayersTable.PhoneNumber" class="form-label">Phone Number</label>
+                <input asp-for="PlayersTable.PhoneNumber" class="form-control" />
+                <span asp-validation-for="PlayersTable.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlayersTable.Password" class="form-label">Password</label>
+                <input asp-for="PlayersTable.Password" type="password"  class="form-control" />
+                <span asp-validation-for="PlayersTable.Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PlayersTable.Country" class="form-label">Country</label>
+                <select asp-for="PlayersTable.Country" class="form-select">
+                    <option value="" disabled selected>Select your country</option>
+                    @foreach (var country in Model.Countries)
+                    {
+                        <option value="@country">@country</option>
+                    }
+                </select>
+                <span asp-validation-for="PlayersTable.Country" class="text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let errorMessage = '@TempData["ErrorMessage"]';
+            let successMessage = '@TempData["SuccessMessage"]';
+            let isError = errorMessage ? true : false;
+            let message = isError ? errorMessage : successMessage;
+
+            if (message) {
+                document.getElementById('messageModalTitle').innerText = isError ? 'Error' : 'Success';
+                document.getElementById('messageModalBody').innerText = message;
+
+                let modal = new bootstrap.Modal(document.getElementById('messageModal'));
+                modal.show();
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}

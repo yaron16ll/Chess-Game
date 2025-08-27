@@ -1,0 +1,105 @@
+﻿@page
+@model Server.Pages.Players.IndexModel
+
+@{
+    ViewData["Title"] = "Players Index";
+    var results = Model.QueryResults;
+    var isDeletePlayer = Model.isDeletePlayer;
+    var isDeleteGame = Model.isDeleteGame;
+
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Dynamic Results Table -->
+        <div class="col-sm-8">
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        @if (results != null && results.Any())
+                        {
+                            foreach (var item in results.First().GetType().GetProperties())
+                            {
+                                if (item.Name != "ID") // Skip the ID property
+                                {
+                                    <th>@item.Name</th>
+                                }
+                            }
+                            if (isDeletePlayer || isDeleteGame)
+                            {
+                                <th>Action</th>
+                            }
+
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (results != null && results.Any())
+                    {
+                        @foreach (var item in results)
+                        {
+                            <tr>
+                                @foreach (var property in item.GetType().GetProperties())
+                                {
+                                    if (property.Name != "ID") // Skip the ID property
+                                    {
+                                        <td>@(property.GetValue(item, null))</td>
+                                    }
+                                }
+
+                                @if (isDeletePlayer)
+                                {
+                                    <td>
+                                        <form method="post" asp-page-handler="DeletePlayer" asp-route-id="@item.ID">
+                                            <button type="submit" class="linqBtnTable">Delete</button>
+                                        </form>
+                                        <a asp-page="./Edit" asp-route-id="@item.ID" class="linqBtnTable">Edit</a>
+
+
+                                    </td>
+                                }
+                                @if (isDeleteGame)
+                                {
+                                    <td>
+                                        <form method="post" asp-page-handler="DeleteGame" asp-route-id="@item.ID">
+                                            <button type="submit" class="linqBtnTable">Delete</button>
+                                        </form>
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td id="default-result"><p>No data available</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Query Buttons -->
+        <div class="col-sm-4">
+            @foreach (var action in Model.actions)
+            {
+                <form method="post" asp-page-handler="@action.Handler">
+                    <button type="submit" class="linqBtn">
+                        @action.Label
+                    </button>
+                </form>
+                <br>
+            }
+            <div class="mb-3">
+                <form method="post" asp-page-handler="PlayerSelected">
+                    <select class="form-select dynamic-select" asp-for="SelectedPlayerName" onchange="this.form.submit()">
+                        <option value="" disabled selected>Select player name</option>
+                        @foreach (var name in Model.PlayerNames)
+                        {
+                            <option value="@name">@name</option>
+                        }
+                    </select>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@page "{id:int?}"
+@model Server.Models.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container w-50">
+    <h2 class="text-center mb-4">Player Edition</h2>
+    <form method="post" class="p-4 rounded shadow-sm">
+        <input type="hidden" asp-for="PlayersTable.ID" />
+        <div class="mb-3">
+            <label asp-for="PlayersTable.FirstName" class="form-label"></label>
+            <input asp-for="PlayersTable.FirstName" class="form-control" />
+            <span asp-validation-for="PlayersTable.FirstName" class="text-danger"></span>
+        </div>
+         
+          <div class="mb-3">
+              <label asp-for="PlayersTable.LastName" class="form-label"></label>
+              <input asp-for="PlayersTable.LastName" class="form-control" />
+              <span asp-validation-for="PlayersTable.LastName" class="text-danger"></span>
+          </div>
+
+        <div class="mb-3">
+            <label asp-for="PlayersTable.Password" class="form-label">Password</label>
+            <input asp-for="PlayersTable.Password" class="form-control" />
+            <span asp-validation-for="PlayersTable.Password" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PlayersTable.PhoneNumber" class="form-label"></label>
+            <input asp-for="PlayersTable.PhoneNumber" class="form-control" />
+            <span asp-validation-for="PlayersTable.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PlayersTable.Country" class="form-label">Country</label>
+            <select asp-for="PlayersTable.Country" class="form-select">
+                <option value="" disabled selected>Select your country</option>
+                @foreach (var country in Model.Countries)
+                {
+                    <option value="@country">@country</option>
+                }
+            </select>
+            <span asp-validation-for="PlayersTable.Country" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
