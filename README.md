@@ -19,4 +19,7 @@ of time loses. The **client side (WinForms)** manages the graphical board, game 
 <img width="380" height="405" alt="Image" src="https://github.com/user-attachments/assets/502a9521-17cd-4414-a8f7-5add34a25701" />
 
 ## Video panel
-[Watch the demo](https://drive.google.com/file/d/1mQcfLdVq1upDM6GStftOeHL7DVMN-2jT/view?usp=drive_link)
+https://github.com/user-attachments/assets/e96d0984-db0a-47c5-8c05-06f710e77a4c
+
+
+
