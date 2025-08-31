@@ -4,16 +4,16 @@ The **“Half-Chess”** project is a **full-stack .NET** application that combi
 <img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/5b76b72e-c546-40e7-a10f-f13369219dfb" /> 
 
 
-## Login screen
+## Login screen (WinForms client)
 <img width="427" height="671" alt="Image" src="https://github.com/user-attachments/assets/5a48a4f1-3840-4915-ae75-ba30e4e4e9c5" />
 
-## Homepage screen
+## Homepage screen (WinForms client)
 <img width="422" height="672" alt="Image" src="https://github.com/user-attachments/assets/8026de99-4c30-43d6-808e-5a6d36e823dd" />
 
-## Game screen
+## Game screen (WinForms client)
 <img width="457" height="742" alt="Image" src="https://github.com/user-attachments/assets/51b98134-af31-44bc-9b0d-574f58cdf182" />
 
-## Winner screen
+## Winner screen (WinForms client)
 <img width="380" height="405" alt="Image" src="https://github.com/user-attachments/assets/502a9521-17cd-4414-a8f7-5add34a25701" />
 
 ## Video panel
