@@ -21,4 +21,4 @@ The **“Half-Chess”** project is a **full-stack .NET** application that combi
 https://github.com/user-attachments/assets/e96d0984-db0a-47c5-8c05-06f710e77a4c
 
 ### ASP.NET Core Web App with Razor Pages,
-[Watch Video](https://github.com/<OWNER>/<REPO>/releases/download/<TAG>/Record.2025.09.01.01.01.47.594.mp4)
+[⬇️ Download Record Video](https://github.com/yaron16ll/Chess-Game/releases/download/video/Record.2025.09.01.01.01.47.594.mp4)
