@@ -20,3 +20,4 @@ The **“Half-Chess”** project is a **full-stack .NET** application that combi
 ### WinForms client
 https://github.com/user-attachments/assets/e96d0984-db0a-47c5-8c05-06f710e77a4c
 
+### ASP.NET Core Web App with Razor Pages,
