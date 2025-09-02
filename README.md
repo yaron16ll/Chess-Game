@@ -1,7 +1,7 @@
 # Chess-Game 
 The **“Half-Chess”** project is a **full-stack .NET** application that combines a **WinForms client**, an **ASP.NET Core Web API server**, an **ASP.NET Core Web App with Razor Pages**, and a **SQL Server database**. It implements a shortened chess variant on an 8×4 board (the right half of a standard chessboard), where each side has a King, Bishop, Knight, Rook, and four pawns. The game follows the standard chess rules with a per-turn timer, and a player who runs out of time loses. The WinForms client manages the graphical board, game logic, timers, move and check animations, and freehand drawing tools for annotations. The ASP.NET Core Web API server handles communication with clients, manages player and game records in the SQL Server database through Entity Framework Core, and generates random legal moves as the opponent’s responses. The ASP.NET Core Web App with Razor Pages provides a web interface that allows database operations, player registration, query execution, and result viewing. The SQL Server database serves as a central repository for players and games, enabling complete tracking and storage of all relevant information.
 
-<img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/5b76b72e-c546-40e7-a10f-f13369219dfb" /> 
+<img width="313" height="289" alt="sj" src="https://github.com/user-attachments/assets/7f8a7485-ffc4-4118-a54d-003835e79992" />
 
 
 ## Login screen (WinForms client)
